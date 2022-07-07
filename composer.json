@@ -1,0 +1,28 @@
+{
+  "name": "leolopez/crudgeneratormc",
+  "description": "Generates crud for Laravel with MC UI",
+  "type": "library",
+  "autoload": {
+    "psr-4": {
+      "Leolopez\\Crudgeneratormc\\": "src/"
+    }
+  },
+  "authors": [
+    {
+      "name": "Leonel Lopez",
+      "email": "lalopez@cultura.gob.sv"
+    }
+  ],
+  "minimum-stability": "stable",
+  "require": {},
+  "extra": {
+    "laravel": {
+      "providers": [
+        "\\Leolopez\\Crudgeneratormc\\CrudgeneratorServiceProvider"
+      ],
+      "aliases": {
+        "Crudgeneratormc": "Leolopez\\Crudgeneratormc\\Facades\\Crudgenerator"
+      }
+    }
+  }
+}

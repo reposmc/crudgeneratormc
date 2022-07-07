@@ -1,0 +1,125 @@
+<?php
+
+namespace App\Http\Controllers;
+
+use App\Models\{{className}};
+{{imports}}
+use Illuminate\Http\Request;
+use Encrypt;
+
+class {{className}}Controller extends Controller
+{
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index(Request $request)
+    {
+        $itemsPerPage = $request->itemsPerPage;
+        $skip = 0;
+
+        if (($request->itemsPerPage == -1)) {
+            $itemsPerPage =  {{className}}::count();
+            $skip = ($request->page - 1) * $request->itemsPerPage;
+        }
+
+        $sortBy = (isset($request->sortBy[0])) ? $request->sortBy[0] : 'id';
+        $sort = (isset($request->sortDesc[0])) ? "asc" : 'desc';
+
+        $search = (isset($request->search)) ? "%$request->search%" : '%%';
+
+        ${{model}} = {{className}}::allDataSearched($search, $sortBy, $sort, $skip, $itemsPerPage);
+        ${{model}} = Encrypt::encryptObject(${{model}}, "id");
+
+        $total = {{className}}::counterPagination($search);
+
+        return response()->json([
+            "status" => 200,
+            "message"=>"Registros obtenidos correctamente.",
+            "{{model}}" => ${{model}},
+            "total" => $total,
+            "success"=>true,
+        ]);
+    }
+
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
+    {
+        ${{model}} = new {{className}};
+
+{{formFields}}
+        ${{model}}->save();
+
+        return response()->json([
+            "status"=>200,
+            "message"=>"Registro creado correctamente.",
+            "success"=>true,
+        ]);
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Models\{{className}}  {{model}}
+     * @return \Illuminate\Http\Response
+     */
+    public function show({{className}} ${{model}})
+    {
+        //
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Models\{{className}}  ${{model}}
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request)
+    {
+        $data = Encrypt::decryptArray($request->all(), 'id');
+
+        ${{model}} = {{className}}::where('id', $data['id'])->first();
+{{formFields}}
+        ${{model}}->save();
+
+        return response()->json([
+            "status"=>200,
+            "message"=>"Registro modificado correctamente.",
+            "success"=>true,
+        ]);
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  \App\Models\{{className}}  ${{model}}
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy(Request $request)
+    {
+        if (count($request->selected) > 0) {
+            foreach ($request->selected as $item) {
+                $id = Encrypt::decryptValue($item['id']);
+
+                {{className}}::where('id', $id)->delete();
+            }
+        } else {
+            $id = Encrypt::decryptValue($request->id);
+
+            {{className}}::where('id', $id)->delete();
+        }
+
+        return response()->json([
+            "status"=>200,
+            "message"=>"Registro eliminado correctamente.",
+            "success"=>true,
+        ]);
+    }
+}

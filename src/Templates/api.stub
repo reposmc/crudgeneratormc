@@ -1,0 +1,11 @@
+import axios from "axios";
+// import { interceptorRequest, interceptorReponse } from "./interceptor";
+
+const {{apiName}}Api = axios.create({
+    baseURL: "/api/web/{{apiName}}",
+});
+
+// {{apiName}}Api.interceptors.request.use(interceptorRequest);
+// {{apiName}}Api.interceptors.response.reject(interceptorReponse);
+
+export default {{apiName}}Api;
