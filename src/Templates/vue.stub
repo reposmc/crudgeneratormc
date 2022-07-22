@@ -356,8 +356,8 @@ export default {
             this.updateAlert(true, "No fue posible obtener los registros.", "fail");
           });
 
-        this.records = data.customer;
-        this.recordsFiltered = data.customer;
+        this.records = data.records;
+        this.recordsFiltered = data.records;
         this.total = data.total;
         this.loading = false;
       }, 500);
