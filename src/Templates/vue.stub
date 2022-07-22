@@ -321,9 +321,11 @@ export default {
 
     async deleteItemConfirm() {
       const { data } = await {{apiName}}
-        .post("/delete", {
-          selected: this.selected,
-          id: this.editedItem.id,
+        .delete(null, {
+          params: {
+            selected: this.selected,
+            id: this.editedItem.id,
+          }
         })
         .catch((error) => {
             this.updateAlert(true, "No fue posible eliminar el registro.", "fail");
