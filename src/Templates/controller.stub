@@ -104,10 +104,11 @@ class {{className}}Controller extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = isset($request->selected)? $request->selected : [];
+        $data = isset($request->selected) ? $request->selected : [];
+
         if (count($data) > 0) {
-            foreach ($request->selected as $item) {
-                $id = Encrypt::decryptValue($item['id']);
+            foreach ($data as $item) {
+                $item = json_decode($item);
 
                 {{className}}::where('id', $id)->delete();
             }
