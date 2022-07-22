@@ -37,7 +37,7 @@ class {{className}}Controller extends Controller
         return response()->json([
             "status" => 200,
             "message"=>"Registros obtenidos correctamente.",
-            "{{model}}" => ${{model}},
+            "records" => ${{model}},
             "total" => $total,
             "success"=>true,
         ]);
