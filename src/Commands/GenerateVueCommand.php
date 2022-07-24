@@ -104,7 +104,7 @@ class GenerateVueCommand extends Command
                     // Joining the strings for the template
                     $form .= Helper::getSelectSearchField($field, $nameTableForeign);
 
-                    $import = Helper::formatFieldName($nameTableForeign)."Api";
+                    $import = Helper::lowerFormatFieldName($nameTableForeign)."Api";
                     $importApis .= "import $import from \"../apis/$import\"";
 
                     // Creating the api file

@@ -51,6 +51,22 @@ class Helper
     }
 
     /**
+     * Replace the first letter to a lower case.
+     *
+     * @return String $field
+     */
+    public static function lowerFormatFieldName(string $field = ""): string
+    {
+        $field = str_replace("_", " ", $field);
+        $field = ucwords($field);
+        $field = lcfirst($field);
+        $field = str_replace(" ", "", $field);
+        $field = strtolower($field);
+
+        return $field;
+    }
+
+    /**
      * Replace the first letter to a capital letter.
      *
      * @return String $field
