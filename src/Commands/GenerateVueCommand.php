@@ -117,7 +117,7 @@ class GenerateVueCommand extends Command
                     $dataArrays .= "$assign: [],\n";
                     $requestAssigns .= "this.$assign = responses[$requestIterator].data.$assign;\n";
 
-                    $validations .= "$field: {\n\t\trequired,\n\t\tminLength: minLength(1),\n},\n}";
+                    $validations .= "$field: {\n\t\trequired,\n\t\tminLength: minLength(1),\n},\n";
 
                     $dataObject .= "\t\t$field: \"\",";
                     $requestApis .= "$import.get(null, {\n\t\tparams: { itemsPerPage: -1 },\n\t}),";
