@@ -61,7 +61,6 @@ class Helper
         $field = ucwords($field);
         $field = lcfirst($field);
         $field = str_replace(" ", "", $field);
-        $field = strtolower($field);
 
         return $field;
     }
