@@ -17,11 +17,12 @@ class {{className}}Controller extends Controller
     public function index(Request $request)
     {
         $itemsPerPage = $request->itemsPerPage;
-        $skip = 0;
+        $skip = ($request->page - 1) * $request->itemsPerPage;
 
+        // Getting all the records
         if (($request->itemsPerPage == -1)) {
             $itemsPerPage =  {{className}}::count();
-            $skip = ($request->page - 1) * $request->itemsPerPage;
+            $skip = 0;
         }
 
         $sortBy = (isset($request->sortBy[0])) ? $request->sortBy[0] : 'id';
