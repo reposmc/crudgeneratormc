@@ -50,7 +50,7 @@ class GenerateVueCommand extends Command
         if (!empty($name)) {
             $modelName = $name;
         } else {
-            $modelName = Str::singular(Helper::formatClassName($table));
+            $modelName = Str::singular(Helper::lowerFormatFieldName($table));
 
             $modelName = Helper::validateName($modelName, $this);
         }
