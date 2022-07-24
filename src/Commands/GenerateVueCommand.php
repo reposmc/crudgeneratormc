@@ -50,7 +50,7 @@ class GenerateVueCommand extends Command
         if (!empty($name)) {
             $modelName = $name;
         } else {
-            $modelName = Str::singular(Helper::lowerFormatFieldName($table));
+            $modelName = Str::singular(Helper::formatFieldName($table));
 
             $modelName = Helper::validateName($modelName, $this);
         }
@@ -59,7 +59,7 @@ class GenerateVueCommand extends Command
         if (!empty($api)) {
             $apiName = $api;
         } else {
-            $apiName = Str::singular(Helper::formatFieldName($table));
+            $apiName = Str::singular(Helper::lowerFormatFieldName($table));
 
             $apiName = Helper::validateName($apiName, $this, " for the api file");
         }
