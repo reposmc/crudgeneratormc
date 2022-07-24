@@ -55,7 +55,7 @@ class GenerateApiFileCommand extends Command
         if (!empty($api)) {
             $apiName = $api;
         } else {
-            $apiName = Str::singular(Helper::formatFieldName($table));
+            $apiName = Str::singular(Helper::lowerFormatFieldName($table));
 
             $apiName = Helper::validateName($apiName, $this, " for the api file");
         }
@@ -65,7 +65,8 @@ class GenerateApiFileCommand extends Command
             return 0;
         }
 
-        $this->info("\nAdd the following route to routes/web.php: \nRoute::resource('/api/web/$apiName', ".Helper::formatClassName($apiName)."Controller::class);");
+        $this->warn("\n\nAdd the following route to routes/web.php: \nRoute::resource('/api/web/$apiName', ".Helper::lowerFormatFieldName($apiName)."Controller::class);");
+        $this->warn("\n\nRoute::delete('/api/web/$apiName', ".Helper::lowerFormatFieldName($apiName)."[Controller::class, 'destroy']);");
 
         return 0;
     }
