@@ -18,7 +18,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "\\Leolopez\\Crudgeneratormc\\CrudgeneratorServiceProvider"
+        "\\Leolopez\\Crudgeneratormc\\CrudGeneratorServiceProvider"
       ],
       "aliases": {
         "Crudgeneratormc": "Leolopez\\Crudgeneratormc\\Facades\\Crudgenerator"

@@ -71,7 +71,7 @@ class GenerateVueCommand extends Command
         $apiNameCurrentTable = $apiName."Api";
 
         $form = "";
-        $importApis = "import $apiNameCurrentTable from \"../apis/$apiNameCurrentTable\";\n";
+        $importApis = "\nimport $apiNameCurrentTable from \"../apis/$apiNameCurrentTable\";\n";
         $validations = "";
         $dataObject = "";
         $headers = "";
