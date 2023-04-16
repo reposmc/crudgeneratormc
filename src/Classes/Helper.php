@@ -85,7 +85,7 @@ class Helper
      */
     public static function readStub(string $fileName): string
     {
-        return file_get_contents(__DIR__ . '\\..\\Templates\\' . $fileName);
+        return file_get_contents(__DIR__ . '/../Templates/' . $fileName);
     }
 
     /**
