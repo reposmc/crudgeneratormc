@@ -12,8 +12,6 @@ class {{className}} extends Model
 
     protected $table = '{{tableName}}';
 
-    public $incrementing = true;
-
     protected $data = ['deleted_at'];
 
     protected $fillable = [

@@ -65,8 +65,8 @@ class GenerateApiFileCommand extends Command
             return 0;
         }
 
-        $this->warn("\n\nAdd the following route to routes/web.php: \nRoute::resource('/api/web/$apiName', ".Helper::lowerFormatFieldName($apiName)."Controller::class);");
-        $this->warn("Route::delete('/api/web/$apiName', ".Helper::lowerFormatFieldName($apiName)."[Controller::class, 'destroy']);\n\n");
+        $this->warn("\n\nAdd the following route to routes/api.php: \nRoute::resource('/api/$apiName', ".Helper::formatClassName($apiName)."Controller::class);");
+        //$this->warn("Route::delete('/api/$apiName', [".Helper::lowerFormatFieldName($apiName)."Controller::class, 'destroy']);\n\n");
 
         return 0;
     }

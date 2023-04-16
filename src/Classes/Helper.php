@@ -138,7 +138,7 @@ class Helper
 
     public static function columnsFromTable($referencedTableName = "")
     {
-        return DB::select(DB::raw('SHOW COLUMNS FROM `'.$referencedTableName.'`'));
+        return DB::select('SHOW COLUMNS FROM `'.$referencedTableName.'`');
     }
 
     public static function infoReferencedTable($databaseName = "", $table = "", $field = "")

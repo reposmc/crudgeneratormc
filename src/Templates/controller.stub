@@ -16,7 +16,7 @@ class {{className}}Controller extends Controller
      */
     public function index(Request $request)
     {
-        $itemsPerPage = $request->itemsPerPage;
+        $itemsPerPage = $request->itemsPerPage ?? 10;
         $skip = ($request->page - 1) * $request->itemsPerPage;
 
         // Getting all the records
@@ -36,11 +36,9 @@ class {{className}}Controller extends Controller
         $total = {{className}}::counterPagination($search);
 
         return response()->json([
-            "status" => 200,
             "message"=>"Registros obtenidos correctamente.",
-            "records" => ${{model}},
+            "data" => ${{model}},
             "total" => $total,
-            "success"=>true,
         ]);
     }
 
@@ -58,9 +56,7 @@ class {{className}}Controller extends Controller
         ${{model}}->save();
 
         return response()->json([
-            "status"=>200,
             "message"=>"Registro creado correctamente.",
-            "success"=>true,
         ]);
     }
 
@@ -91,9 +87,7 @@ class {{className}}Controller extends Controller
         ${{model}}->save();
 
         return response()->json([
-            "status"=>200,
             "message"=>"Registro modificado correctamente.",
-            "success"=>true,
         ]);
     }
 
@@ -115,9 +109,7 @@ class {{className}}Controller extends Controller
             }
 
             return response()->json([
-                "status"=>200,
                 "message"=>"Registro eliminado correctamente.",
-                "success"=>true,
             ]);
         } 
 
@@ -126,9 +118,7 @@ class {{className}}Controller extends Controller
         {{className}}::where('id', $id)->delete();
 
         return response()->json([
-            "status"=>200,
             "message"=>"Registro eliminado correctamente.",
-            "success"=>true,
         ]);
     }
 }
