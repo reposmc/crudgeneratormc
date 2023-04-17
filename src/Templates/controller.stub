@@ -99,20 +99,6 @@ class {{className}}Controller extends Controller
      */
     public function destroy(Request $request)
     {
-        $data = isset($request->selected) ? $request->selected : [];
-
-        if (count($data) > 0) {
-            foreach ($data as $item) {
-                $item = json_decode($item);
-
-                {{className}}::where('id', $id)->delete();
-            }
-
-            return response()->json([
-                "message"=>"Registro eliminado correctamente.",
-            ]);
-        } 
-
         $id = Encrypt::decryptValue($request->id);
 
         {{className}}::where('id', $id)->delete();

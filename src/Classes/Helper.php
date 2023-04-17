@@ -216,8 +216,8 @@ class Helper
             <v-col cols=\"12\" sm=\"12\" md=\"4\">
                 <base-input
                 label=\"$label\"
-                v-model=\"\$v.editedItem.$field.\$model\"
-                :rules=\"\$v.editedItem.$field\"
+                v-model=\"\v$.editedItem.$field.\$model\"
+                :rules=\"\v$.editedItem.$field\"
                 />
             </v-col>
         <!-- $field -->\n
@@ -234,10 +234,10 @@ class Helper
             <v-col cols=\"12\" sm=\"12\" md=\"4\">
                 <base-select-search
                     label=\"$label\"
-                    v-model.trim=\"\$v.editedItem.$field.\$model\"
+                    v-model.trim=\"\v$.editedItem.$field.\$model\"
                     :items=\"$items\"
                     item=\"$field\"
-                    :rules=\"\$v.editedItem.$field\"
+                    :rules=\"\v$.editedItem.$field\"
                 />
             </v-col>
         <!-- $field -->\n
