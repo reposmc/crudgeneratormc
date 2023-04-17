@@ -112,13 +112,14 @@ import { helpers, minLength, required, email } from "@vuelidate/validators";
 
 import BaseButton from "../components/base-components/BaseButton.vue";
 import BaseInput from "../components/base-components/BaseInput.vue";
+import BaseSelect from "../components/base-components/BaseSelect.vue";
 import useAlert from "../composables/useAlert";
 
 const { alert } = useAlert();
 const langMessages = messages["es"].validations;
 
 export default {
-  components: { BaseButton, BaseInput },
+  components: { BaseButton, BaseInput, BaseSelect },
   setup() {
     return { v$: useVuelidate() };
   },

@@ -137,7 +137,7 @@ class GenerateVueCommand extends Command
 
                     $nameHeader = Helper::formatLabelName($field);
 
-                    $headers .= "\n\t\t{ text: \"$nameHeader\", value: \"$field\" },";
+                    $headers .= "\n\t\t{ title: \"$nameHeader\", key: \"$field\" },";
 
             }
         }

@@ -217,12 +217,7 @@ class Helper
                 <base-input
                 label=\"$label\"
                 v-model=\"\$v.editedItem.$field.\$model\"
-                :validation=\"\$v.editedItem.$field\"
-                validationTextType=\"none\"
-                :validationsInput=\"{
-                    required: true,
-                    minLength: true,
-                }\"
+                :rules=\"\$v.editedItem.$field\"
                 />
             </v-col>
         <!-- $field -->\n
@@ -242,11 +237,7 @@ class Helper
                     v-model.trim=\"\$v.editedItem.$field.\$model\"
                     :items=\"$items\"
                     item=\"$field\"
-                    :validation=\"\$v.editedItem.$field\"
-                    :validationsInput=\"{
-                        required: true,
-                        minLength: true,
-                    }\"
+                    :rules=\"\$v.editedItem.$field\"
                 />
             </v-col>
         <!-- $field -->\n

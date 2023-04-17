@@ -2,7 +2,7 @@ import axios from "axios";
 // import { interceptorRequest, interceptorReponse } from "./interceptor";
 
 const {{apiName}}Api = axios.create({
-    baseURL: "/api/{{apiName}}",
+    baseURL: import.meta.env.VITE_BACKEND_URL + "/api/{{apiName}}",
 });
 
 // {{apiName}}Api.interceptors.request.use(interceptorRequest);
