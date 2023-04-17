@@ -71,7 +71,7 @@ class GenerateVueCommand extends Command
         $apiNameCurrentTable = $apiName."Api";
 
         $form = "";
-        $importApis = "\nimport $apiNameCurrentTable from \"../apis/$apiNameCurrentTable\";\n";
+        $importApis = "\nimport $apiNameCurrentTable from \"@/services/$apiNameCurrentTable\";\n";
         $validations = "";
         $dataObject = "";
         $headers = "";
@@ -105,7 +105,7 @@ class GenerateVueCommand extends Command
                     $form .= Helper::getSelectSearchField($field, $nameTableForeign);
 
                     $import = Helper::lowerFormatFieldName($nameTableForeign)."Api";
-                    $importApis .= "import $import from \"../apis/$import\"";
+                    $importApis .= "\nimport $import from \"@/services/$import\";\n";
 
                     // Creating the api file
                     if ($this->confirm("Do you want to generate the api file for $nameTableForeign?", false)) {
