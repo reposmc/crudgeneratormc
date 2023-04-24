@@ -37,8 +37,13 @@ class {{className}}Controller extends Controller
 
         return response()->json([
             "message"=>"Registros obtenidos correctamente.",
+<<<<<<< HEAD
+            "data" => ${{model}},
+            "total" => $total
+=======
             "data" => ${{model}},
             "total" => $total,
+>>>>>>> 71b85ced0b8466134aa83407a0a8d1f6aa458f87
         ]);
     }
 
@@ -99,6 +104,23 @@ class {{className}}Controller extends Controller
      */
     public function destroy(Request $request)
     {
+<<<<<<< HEAD
+        $data = isset($request->selected) ? $request->selected : [];
+
+        if (count($data) > 0) {
+            foreach ($data as $item) {
+                $item = json_decode($item);
+
+                {{className}}::where('id', $id)->delete();
+            }
+
+            return response()->json([
+                "message"=>"Registro eliminado correctamente.",
+            ]);
+        } 
+
+=======
+>>>>>>> 71b85ced0b8466134aa83407a0a8d1f6aa458f87
         $id = Encrypt::decryptValue($request->id);
 
         {{className}}::where('id', $id)->delete();

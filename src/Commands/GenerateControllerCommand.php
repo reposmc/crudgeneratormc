@@ -66,7 +66,7 @@ class GenerateControllerCommand extends Command
 
                     $referencedTableName = Helper::validateName($referencedTableName, $this);
 
-                    $columnsForeign = DB::select(DB::raw('SHOW COLUMNS FROM `'.$nameTableForeign.'`'));
+                    $columnsForeign = DB::select('SHOW COLUMNS FROM `'.$nameTableForeign.'`');
                     $foreignColumns = [];
                     foreach ($columnsForeign as $column) {
                         $foreignColumns[] = $column->Field;
